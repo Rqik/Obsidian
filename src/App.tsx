@@ -1,13 +1,20 @@
-import { useState } from 'react'
+import './App.scss';
 
+import React from 'react';
+import { Provider } from 'react-redux';
 
-function App() {
+import Home from './pages/Home';
+import { store } from './store/store';
 
+const App: React.FC = () => {
+  const s = '2';
   return (
-    <>
-       its obsidian 3
-    </>
-  )
-}
+    <Provider store={store}>
+      <div className="app">
+        <Home />
+      </div>
+    </Provider>
+  );
+};
 
-export default App
+export default App;
