@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../shared/hooks';
 import { linkNotes, selectAllNotes, selectLinkedNotes, selectNoteById, updateNote } from '../../store/notes.slice';
 import type { Note as NoteType } from '../../types';
+import { Button } from '../Button';
 import styles from './Note.module.scss';
 
 interface NoteProps {
@@ -85,17 +86,17 @@ const Note: React.FC<NoteProps> = ({ noteId }) => {
         <div className={styles.actions}>
           {isEditing ? (
             <>
-              <button onClick={handleSave} className={styles.saveButton}>
+              <Button variant="save" onClick={handleSave}>
                 Save
-              </button>
-              <button onClick={handleCancel} className={styles.cancelButton}>
+              </Button>
+              <Button variant="cancel" onClick={handleCancel}>
                 Cancel
-              </button>
+              </Button>
             </>
           ) : (
-            <button onClick={() => setIsEditing(true)} className={styles.editButton}>
+            <Button variant="edit" onClick={() => setIsEditing(true)}>
               Edit
-            </button>
+            </Button>
           )}
         </div>
       </div>
@@ -123,13 +124,9 @@ const Note: React.FC<NoteProps> = ({ noteId }) => {
       <div className={styles.linkedNotes}>
         <div className={styles.linkedHeader}>
           <h3>Linked Notes</h3>
-          <button
-            onClick={() => setShowLinkDialog(true)}
-            className={styles.linkButton}
-            disabled={availableNotesToLink.length === 0}
-          >
+          <Button variant="link" onClick={() => setShowLinkDialog(true)} disabled={availableNotesToLink.length === 0}>
             + Link Note
-          </button>
+          </Button>
         </div>
 
         {linkedNotes.length > 0 ? (
@@ -165,9 +162,9 @@ const Note: React.FC<NoteProps> = ({ noteId }) => {
                 </button>
               ))}
             </div>
-            <button onClick={() => setShowLinkDialog(false)} className={styles.closeDialog}>
+            <Button variant="cancel" onClick={() => setShowLinkDialog(false)} className={styles.closeDialog}>
               Cancel
-            </button>
+            </Button>
           </div>
         </div>
       )}

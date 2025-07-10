@@ -1,4 +1,4 @@
-@import './shared/styles/variables';
+@use './shared/styles/_variables.scss' ;
 
 * {
   box-sizing: border-box;
@@ -41,7 +41,6 @@ body {
   height: 1px;
   padding: 0;
   margin: -1px;
-  overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;

@@ -1,6 +1,6 @@
 import { configureStore, Middleware } from '@reduxjs/toolkit';
 
-import notesReducer from '../features/notes/noteSlice';
+import notesReducer from './notes.slice';
 
 // Cross-tab synchronization middleware
 const syncMiddleware: Middleware = (store) => (next) => (action) => {

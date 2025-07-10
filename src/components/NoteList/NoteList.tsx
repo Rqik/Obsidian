@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import { addNote, deleteNote, selectAllNotes, selectNote, selectSelectedNoteId } from '../noteSlice';
+import { useAppDispatch, useAppSelector } from '../../shared/hooks';
+import { addNote, deleteNote, selectAllNotes, selectNote, selectSelectedNoteId } from '../../store/notes.slice';
 import styles from './NoteList.module.scss';
 
 const NoteList: React.FC = () => {
