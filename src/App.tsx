@@ -1,20 +1,20 @@
 import './App.scss';
 
+import { HeroUIProvider } from '@heroui/react';
 import React from 'react';
 import { Provider } from 'react-redux';
 
 import Home from './pages/Home';
 import { store } from './store/store';
 
-const App: React.FC = () => {
+const App: React.FC = () => (
   // const s = '2';
-  return (
+  <HeroUIProvider>
     <Provider store={store}>
       <div className="app">
         <Home />
       </div>
     </Provider>
-  );
-};
-
+  </HeroUIProvider>
+);
 export default App;

@@ -1,0 +1,20 @@
+.sidebar {
+  overflow: auto;
+}
+
+.resizer {
+  cursor: col-resize;
+  width: 4px;
+  background-color: #dddddd;
+  transition: all 0.3s ease;
+
+
+  &:hover {
+    width: 15px;
+    background-color: #8e44ad;
+  }
+}
+
+.content {
+  overflow: auto;
+}

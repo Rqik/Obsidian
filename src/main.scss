@@ -1,4 +1,4 @@
-@use './shared/styles/_variables.scss' ;
+@use './shared/styles/_variables.scss';
 
 * {
   box-sizing: border-box;
@@ -13,10 +13,11 @@ html {
 
 body {
   font-family: var(--font-family);
-  background-color: var(--background-color);
-  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--text-primary);
+
+  background-color: var(--background-color);
 }
 
 #root {
@@ -24,24 +25,38 @@ body {
 }
 
 .app {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 // Utility classes
-.u-text-center { text-align: center; }
-.u-text-left { text-align: left; }
-.u-text-right { text-align: right; }
+.u-text-center {
+  text-align: center;
+}
 
-.u-hidden { display: none; }
+.u-text-left {
+  text-align: left;
+}
+
+.u-text-right {
+  text-align: right;
+}
+
+.u-hidden {
+  display: none;
+}
+
 .u-sr-only {
   position: absolute;
+
   width: 1px;
   height: 1px;
-  padding: 0;
   margin: -1px;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+  padding: 0;
   border: 0;
+
+  white-space: nowrap;
+
+  clip: rect(0, 0, 0, 0);
 }

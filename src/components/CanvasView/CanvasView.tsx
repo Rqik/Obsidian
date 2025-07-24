@@ -7,13 +7,12 @@ import styles from './CanvasView.module.scss';
 
 const CanvasView = () => {
   const notes = useSelector(selectAllNotes);
-  console.log(notes);
 
   return (
     <div className={styles.canvas}>
       <CanvasConnection />
       {notes.map((note) => (
-        <DraggableNote key={note.id} note={note} />
+        <DraggableNote key={note.id} note={note} connectionCount={note.linkedNotes.length} />
       ))}
     </div>
   );
