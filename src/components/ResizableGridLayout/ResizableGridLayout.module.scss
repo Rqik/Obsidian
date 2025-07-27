@@ -8,10 +8,19 @@
   background-color: #dddddd;
   transition: all 0.3s ease;
 
-
   &:hover {
     width: 15px;
     background-color: #8e44ad;
+  }
+
+  &_rotation {
+    &_col {
+      cursor: col-resize;
+    }
+
+    &_row {
+      cursor: row-resize;
+    }
   }
 }
 

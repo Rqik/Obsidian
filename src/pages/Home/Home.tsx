@@ -1,4 +1,3 @@
-import { Button } from '@heroui/button';
 import React, { useCallback, useContext, useState } from 'react';
 
 import CanvasView from '../../components/CanvasView';
@@ -23,8 +22,7 @@ const Home: React.FC = () => {
 
   return (
     <div className={styles.home}>
-      <Button color="primary">Button</Button>;
-      <Header activeMode={activeMode} onClickMode={setActiveMode} />
+      {/* <Header activeMode={activeMode} onClickMode={setActiveMode} /> */}
       <ResizableGridLayout
         sidebar={<NoteList />}
         content={
@@ -34,7 +32,7 @@ const Home: React.FC = () => {
           </div>
         }
       />
-      <div className={styles.wrapper}>
+      {/* <div className={styles.wrapper}>
         <div className={styles.sidebar}>
           <NoteList />
         </div>
@@ -63,7 +61,7 @@ const Home: React.FC = () => {
             )}
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

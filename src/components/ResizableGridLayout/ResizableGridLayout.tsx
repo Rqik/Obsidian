@@ -1,6 +1,8 @@
 import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from '@heroui/react';
+import clsx from 'clsx';
 import { type ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 
+import { EmptyPage } from '../EmptyPage';
 import styles from './ResizableGridLayout.module.scss';
 
 interface Props {
@@ -11,8 +13,11 @@ interface Props {
   maxSidebarRatio?: number;
 }
 
+type Rotation = 'col' | 'row';
+
 const DEFAULT_RATIO = 0.25;
 const count = 2;
+const Elements = ['1', '2'];
 
 const ResizableGridLayout = ({
   sidebar,
@@ -26,6 +31,14 @@ const ResizableGridLayout = ({
     const saved = localStorage.getItem(storageKey);
     return saved ? parseFloat(saved) : DEFAULT_RATIO;
   });
+
+  const lineSize = '4px';
+  const gridStyle = {
+    display: 'grid',
+    height: '100vh',
+    gridTemplateColumns: `${sidebarRatio * 100}% ${lineSize} 1fr  ${Elements.map((el) =>`100px ${lineSize}`).join(' ')} `,
+  };
+console.log(gridStyle);
 
   useEffect(() => {
     localStorage.setItem(storageKey, sidebarRatio.toString());
@@ -57,21 +70,24 @@ const ResizableGridLayout = ({
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
     },
-    [sidebarRatio],
+    [maxSidebarRatio, minSidebarRatio, sidebarRatio],
   );
 
-  const gridStyle = {
-    display: 'grid',
-    height: '100vh',
-    gridTemplateColumns: `${sidebarRatio * 100}% 4px 1fr`,
-  };
+  const type: Rotation = 'col';
 
   return (
     <div ref={containerRef} style={gridStyle}>
       <div className={styles.sidebar}>{sidebar}</div>
-      <div className={styles.resizer} onMouseDown={handleMouseDown} />
+      <div
+        className={clsx(styles.resizer, {
+          [styles.resizer_rotation_col]: type === 'col',
+          [styles.resizer_rotation_row]: type === 'row',
+        })}
+        onMouseDown={handleMouseDown}
+      />
       <div className={styles.content}>
-        <Dropdown >
+        <EmptyPage></EmptyPage>
+        <Dropdown>
           <DropdownTrigger>
             <Button variant="bordered">Open Menu</Button>
           </DropdownTrigger>
